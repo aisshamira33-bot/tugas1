@@ -1,0 +1,22 @@
+name: Build C++ EXE
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile C++
+        run: g++ tugas_1.cpp -o tugas_1.exe
+
+      - name: Upload EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: tugas_1-exe
+          path: tugas_1.exe
